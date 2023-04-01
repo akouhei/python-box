@@ -1,10 +1,16 @@
+"""
+ToDo : バックアップファイルが上書きされないようになど工夫が必要か？
+
+"""
 import re
 import shutil
 import glob
 import os
+import argparse
 
-def main():
-    replace_string_in_file("test.py", "line", "XXXX", is_backup=True)
+
+def __main(filepaths, old_string, new_string, backup, recursive):
+    replace_string_in_files(filepaths, old_string, new_string, backup, recursive)
 
 
 def replace_string_in_files(paths, old_string, new_string, backup=False, recursive=False):
@@ -74,7 +80,17 @@ def replace_string_in_file(filepath, old_string, new_string, backup=False):
         file.writelines(replaced_lines)
 
 
-main()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="replace string in files")
+    parser.add_argument("filepaths", type=str, help="filepaths(regular expression)")
+    parser.add_argument("old_string", type=str, help="old string")
+    parser.add_argument("new_string", type=str, help="new string")
+    parser.add_argument("-b", "--backup", action='store_true', default=False, help="True of False about auto backup")
+    parser.add_argument("-r", "--recursive", action='store_true', default=False, help="True of False about reading files recursively")
+
+    args = parser.parse_args()
+
+    __main(args.filepaths, args.old_string, args.new_string, args.backup, args.recursive)
 
 """
 * w : 上書き
