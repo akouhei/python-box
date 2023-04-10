@@ -2,7 +2,6 @@ import argparse
 import os
 import subprocess
 from subprocess import PIPE
-import codecs
 
 
 def sdiff(file1, file2, is_encoding=True):
@@ -17,24 +16,27 @@ def sdiff(file1, file2, is_encoding=True):
     file1 = os.path.abspath(file1)
     file2 = os.path.abspath(file2)
 
+    tmp_file1 = "/tmp/tmp_file1"
+    tmp_file2 = "/tmp/tmp_file2"
+
     if is_encoding:
-        with open("/tmp/tmp_file1", "w") as tmp_file1, open("/tmp/tmp_file2", "w") as tmp_file2:
-            subprocess.run(['nkf', '-wx -Lu', file1], stdout=tmp_file1)
-            subprocess.run(['nkf', '-wx -Lu', file2], stdout=tmp_file2)
+        with open(tmp_file1, "w") as tfp1, open("/tmp/tmp_file2", "w") as tfp2:
+            subprocess.run(['nkf', '-wx -Lu', file1], stdout=tfp1)
+            subprocess.run(['nkf', '-wx -Lu', file2], stdout=tfp2)
 
     print(f"sdiff {file1} vs {file2}")
 
-    result = subprocess.run(['sdiff', '-w', '200', "/tmp/tmp_file1", "/tmp/tmp_file2"], stdout=PIPE)
+    result = subprocess.run(['sdiff', '-w', '200', tmp_file1, tmp_file2], stdout=PIPE)
     print(result.stdout.decode("UTF-8"))
 
-    subprocess.run(['rm', '-f', "/tmp/tmp_file1", "/tmp/tmp_file2"])
+    subprocess.run(['rm', '-f', tmp_file1, tmp_file2])
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="sdiff command for Linux OS")
     parser.add_argument("file1", type=str, help="path to the first file")
     parser.add_argument("file2", type=str, help="path to the second file")
-    parser.add_argument("--encoding", type=str, help="compare file after encoding to UTF-8")
+    parser.add_argument("is_encoding", type=str, help="compare file after encoding to UTF-8")
     args = parser.parse_args()
 
     sdiff(args.file1, args.file2)
