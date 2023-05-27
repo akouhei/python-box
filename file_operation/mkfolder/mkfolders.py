@@ -17,15 +17,20 @@
 '''
 import os
 
-FILE_ENCODE="UTF-8"
+FILE_ENCODE = "UTF-8"
+
+
+def mkfolders(root_path, csv_name="folder_list.csv"):
+    
 
 
 def read_csv(csv_path):
     """ csvファイルをリストに変換する
     :param csv_path:
     :return:
+    ※ CSVのセル内の文字列にカンマを利用している場合は、正常に動作しない。
     """
     if not os.path.isfile(csv_path):
         return []
-    with open(csv_path, mode="w", encoding=FILE_ENCODE) as file:
-        return [f. for f in file.readlines() if not f.isspace()]
+    with open(csv_path, mode="r", encoding=FILE_ENCODE) as file:
+        return [f.split(sep=",") for f in file.readlines()]
