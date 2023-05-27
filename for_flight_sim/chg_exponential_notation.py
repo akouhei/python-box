@@ -26,11 +26,13 @@ def chg_exponential_notation(num, dec_format="0.0000001"):
     point_index = str_num.find(".")
 
     # 数字の桁 修正
+    # 小数点を取得できない場合 / 整数の場合
     if point_index == -1:
-        # 整数の場合
+        # 2342 => 2.352 に変更
         str_num = str_num[:1] + "." + str_num[1:]
+    # 小数点を含む場合
     else:
-        # 小数点を含む場合
+        # 0.0245 => 2.45 に変更
         tmp = str_num.replace(".", "")
         str_num = (tmp[:(point_index - int(exp))] + "." + tmp[(point_index - int(exp)):]).lstrip("0")
 
