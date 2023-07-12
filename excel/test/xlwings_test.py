@@ -2,6 +2,7 @@
 学習用：xlwingsの基礎
 title : 【図解！】xlwingsの使い方 | pythonでExcelを操作①アクティブブックの操作編
 url : https://www.yutaka-note.com/entry/xlwings_active
+yrl : Sheets : https://www.yutaka-note.com/entry/xlwings_sheet#%E4%BD%BF%E7%94%A8%E4%B8%AD%E3%81%AE%E3%82%BB%E3%83%AB%E7%AF%84%E5%9B%B2%E3%81%AE%E5%8F%96%E5%BE%97shtused_range
 """
 
 import xlwings as xw
@@ -48,6 +49,11 @@ def sheet_test():
         # シートを指定
         sht_test = wb.sheets["sheet1"]
         print("wb.sheets['Sheet1'] = ", sht_test)
+        # シートを指定
+        sht_test = wb.sheets[0]
+        print("wb.sheets[0] = ", sht_test)
+
+        wb.save()
 
 
 def cell_test():
