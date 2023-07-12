@@ -1,5 +1,7 @@
 import mkfolders
 
 
-folders = mkfolders.read_csv(r"C:\Users\akouh\Documents\script\python-box\file_operation\mkfolder\folder_list.csv")
+folders = mkfolders.read_csv(r"./folder_list.csv")
 print(folders)
+
+mkfolders.mkfolders("./", r"./folder_list.csv")

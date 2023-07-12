@@ -1,0 +1,70 @@
+# test
+ing
+path
+test
+
+ *** Independent Variable
+ Indvr Symbol    Event     Initial Value    Perturbation    Lower_limit   Upper_limit
+ --------------- --------- ---------------- --------------- ------------- -------------
+ Q               T15       1.00000000e+02    1.00000000e-05 0.0000000e-01 0.0000000e-01
+ R               T15       1.00000000e+02    1.00000000e-05 0.0000000e-01 0.0000000e-01
+ Q               T19       1.00000000e+02    1.00000000e-05 0.0000000e-01 0.0000000e-01
+ R               T19       1.00000000e+02    1.00000000e-05 0.0000000e-01 0.0000000e-01
+ T2                        1.00000000e+02    1.00000000e-05 0.0000000e-01 0.0000000e-01
+
+ *** Dependent Variable
+ Depvr Symbol    Event     Require Value    Tolerance
+ --------------- --------- ----------------- -------------
+ h               T19       4.99999999e+00 EQ  1.000000003-05
+ alpha           T19       4.99999999e+00 EQ  1.000000003-05
+ beta            T19       4.99999999e+00 EQ  1.000000003-05
+
+ *** Optimized Variable
+ Optvr Symbol Event  Requirement
+ ------------ ------ ------------
+ weight       SECO1  MAX
+
+
+ *** Independent Variable
+ Indvr Symbol    Event     Indvr Value
+ --------------- --------- ---------------
+ Q               T15       1.00000000e+02
+ R               T15       1.00000000e+02
+ Q               T19       1.00000000e+02
+ R               T19       1.00000000e+02
+ T2                        1.00000000e+02
+
+ *** Dependent Variable
+ Depvr Symbol    Event     Depvr Value     Error Value    Status
+ --------------- --------- --------------- -------------- -----------
+ h               T19       4.99999999e+00  -6.5236454e-05 Satisfied
+ alpha           T19       4.99999999e+00  -6.5236454e-05 Satisfied
+ beta            T19       4.99999999e+00  -6.5236454e-05 Violated
+
+ *** Optimized Variable
+ Optvr Symbol Event  Optvr Value  Cumulative Var.
+ ------------ ------ ------------ ---------------
+ weight       SECO1   9.23459e+03     0.0000000e+00
+
+
+ *** Independent Variable
+ Indvr Symbol    Event     Indvr Value
+ --------------- --------- ---------------
+ Q               T15       1.00000000e+02
+ R               T15       1.00000000e+02
+ Q               T19       1.00000000e+02
+ R               T19       1.00000000e+02
+ T2                        1.00000000e+02
+
+ *** Dependent Variable
+ Depvr Symbol    Event     Depvr Value     Error Value    Status
+ --------------- --------- --------------- -------------- -----------
+ h               T19       4.99999999e+00  -6.5236454e-05 Satisfied
+ alpha           T19       4.99999999e+00  -6.5236454e-05 Satisfied
+ beta            T19       4.99999999e+00  -6.5236454e-05 Violated
+
+ *** Optimized Variable
+ Optvr Symbol Event  Optvr Value  Cumulative Var.
+ ------------ ------ ------------ ---------------
+ weight       SECO1   9.23459e+03   0.0000000e+00
+
