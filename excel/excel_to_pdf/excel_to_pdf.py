@@ -10,13 +10,6 @@ import xlwings as xw
 from enum import Enum
 
 
-def main():
-    file_path = os.path.abspath("book1.xlsx")
-    sheet_name = "Sheet1"
-    excel_to_pdf(file_path, sheet_name)
-    print("処理を終了します。")
-
-
 def excel_to_pdf(file_path, sheet_name, print_area=None, save_path=None):
     """ エクセルファイルの特定シートをpdf化する
     処理：指定したエクセルファイルのシートを印刷する
@@ -97,5 +90,3 @@ def set_print_area(sheet, print_area):
         print_area = sheet.page_setup.print_area
     sheet.page_setup.print_area = print_area
 
-
-main()
